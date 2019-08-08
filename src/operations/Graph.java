@@ -2,6 +2,7 @@ package operations;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class Graph {
 	
@@ -47,7 +48,7 @@ public class Graph {
 					int n = i.next();
 					if (!visited[n]) {
 						visited[n] = true;
-						System.out.println("Enqueuing at "+n);
+						System.out.println("Q'ing at "+n);
 						queue.add(n);
 					}
 				}
@@ -55,6 +56,32 @@ public class Graph {
 			}
 			
 			}
+		
+		
+		   public void DFS(int v)
+		    {
+		        boolean visited[] = new boolean[V];
+
+		        Stack<Integer> stack = new Stack<Integer>();
+		        stack.add(v);
+
+		        visited[v] = true;
+
+		        while (!stack.isEmpty()) {
+		            int current = stack.pop();
+		            System.out.print(current + " ");
+
+		            Iterator<Integer> i = adj[current].listIterator();
+		            while (i.hasNext())
+		            {
+		                int n = i.next();
+		                if (!visited[n]) {
+		                    stack.add(n);
+		                    visited[n] = true;
+		                }
+		            }
+		        }
+		    }
 			
 		}
 		
